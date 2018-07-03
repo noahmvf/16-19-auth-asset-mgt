@@ -60,4 +60,3 @@ Create a user `Account` model that keeps track of a username, email, hashed pass
 ## Documentation
 Add your Travis badge to the top of your README. List all of your registered routes and describe their behavior. Describe what your resouce is. Imagine you are providing this API to other developers who need to research your API in order to use it. Describe how a developer should be able to make requests to your API. Refer to the PokeAPI docs for a good example to follow.
 
-
