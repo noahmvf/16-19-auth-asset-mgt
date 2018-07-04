@@ -62,6 +62,9 @@ const skipInit = process.env.NODE_ENV === 'development';
 const Account = mongoose.model('accounts', accountSchema, 'accounts', skipInit);
 
 Account.create = (username, email, password) => {
+  if (!username || !password) {
+    throw new HttpErrors(400, 'username and password required');
+  }
   return bcrypt.hash(password, HASH_ROUNDS)
     .then((passwordHash) => {
       password = null; /*eslint-disable-line*/
@@ -74,6 +77,8 @@ Account.create = (username, email, password) => {
       }).save();
     })
     .catch((err) => {
+      console.log('!|!|!|!|!|', err);
+      
       throw new HttpErrors(500, `ERROR WITH HASHING or ERR WITH SAVING ACCOUNT: ${JSON.stringify(err)}`);
     });
 };
