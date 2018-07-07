@@ -11,11 +11,11 @@ import loggerMiddleware from '../lib/middleware/logger-middleware';
 
 // our routes
 import authRouter from '../router/auth-router';
+import profileRouter from '../router/profile-router';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 let server = null;
-
 
 // third party apps
 app.use(cors());
@@ -25,6 +25,7 @@ app.use(express.json());
 // our own api routers or middleware
 app.use(loggerMiddleware);
 app.use(authRouter);
+app.use(profileRouter);
 // catch all
 app.all('*', (request, response) => {
   console.log('Returning a 404 from the catch/all route');
@@ -32,7 +33,6 @@ app.all('*', (request, response) => {
 });
 
 app.use(errorMiddleWare);
-
 
 const startServer = () => {
   return mongoose.connect(process.env.MONGODB_URI)

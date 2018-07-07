@@ -1,6 +1,6 @@
 https://travis-ci.org/noahmvf/16-19-auth-asset-mgt
 
-`List all of your registered routes and describe their behavior.` 
+`Auth-Routes` 
 
 `POST ROUTE`
 Our Post route takes the arguments (response, request, and next) and creates a new Account schema with the properties: passwordhash, username, email, and tokenseed. If any of these properties is missing from the post we'll receive an error. 
@@ -33,4 +33,12 @@ A developer should be able to make requests to create new accounts as well as fe
     "tokenSeed":
 }
 
+`Profile Routes`
+Creating a profile
+- To create a profile, make a POST to the api/profiles url
+- Enter firstName, lastName, bio, and an option profileImgUrl 
+
+Getting a profile
+- To get a profile, make a GET call to the api/profiles url with a specified api/profiles/[profile._id]
+- set token field to token retrieved
 
