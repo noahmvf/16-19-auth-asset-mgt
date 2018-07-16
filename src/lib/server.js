@@ -12,10 +12,12 @@ import loggerMiddleware from '../lib/middleware/logger-middleware';
 // our routes
 import authRouter from '../router/auth-router';
 import profileRouter from '../router/profile-router';
+import beerRouter from '../router/beer-router';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 let server = null;
+
 
 // third party apps
 app.use(cors());
@@ -26,13 +28,13 @@ app.use(express.json());
 app.use(loggerMiddleware);
 app.use(authRouter);
 app.use(profileRouter);
+app.use(beerRouter);
 // catch all
+app.use(errorMiddleWare);
 app.all('*', (request, response) => {
   console.log('Returning a 404 from the catch/all route');
   return response.sendStatus(404).send('Route Not Registered');
 });
-
-app.use(errorMiddleWare);
 
 const startServer = () => {
   return mongoose.connect(process.env.MONGODB_URI)
