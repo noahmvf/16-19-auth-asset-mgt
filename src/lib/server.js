@@ -19,7 +19,7 @@ const PORT = process.env.PORT || 3000;
 let server = null;
 
 
-// third party apps
+// third party app
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
